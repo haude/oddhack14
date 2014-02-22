@@ -2,9 +2,9 @@
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <title>Nepal SVG JS API</title>
+    <title>oddhack14</title>
     <script type="text/javascript" src="assets/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script> -->
     <script type="text/javascript" src="assets/mustache.js"></script>
     <script type="text/javascript" src="assets/jquery.svg.js"></script>
     <script type="text/javascript" src="assets/jquery.xcolor.min.js"></script>
@@ -42,20 +42,23 @@
         }
 
         #map-title{
-            width:300px;
-            position: absolute;
-            font: 18px bold 'Helvetica';
+	    font-family: serif;
+	    margin: 20px 0px 0px 20px;
+            font-size: 40px;
             display: none;
-            text-decoration: underline;
+            font-weight: bold;
+            width: 100%;
         }
 
-        .headqtr-img{
-            width:100px;
-            height:75px;
-            float:left;
-            margin-right: 5px;
-            border:1px solid #fff;
-        }
+	#stats{
+	   margin-top: 20px;
+	   border: 1px solid black;
+	   width:100%;
+	}
+
+	#stats tr td{
+	   padding-left:10px;
+	}
 
         .headqtr-txt{
             float:right;
@@ -67,7 +70,7 @@
     <script type="text/javascript">
         $(function(){
             //popnDensity from map_data.js
-            $('#map').nepalSVG({data:annualGrowthRate})
+            $('#map').nepalSVG({data:popnDensity})
         })
 
         function loadMap(data){
@@ -77,22 +80,22 @@
     </script>
 
 </head>
+
 <body>
-<div class="container">
-    <br>
-    <div>
-        <a class="btn btn-success" onclick="loadMap(popnDensity)">Population Density</a>
-        <a class="btn btn-info" onclick="loadMap(annualGrowthRate)">Annual Growth Rate</a>
+  <div id="map-title"></div>
+  <div class="container" style="width: 100%">
+    <div id="map" style="width: 80%; float:left"></div>
+    <div style="width: 18%; float:right; padding: 10px">
+      <table id="stats" >
+	<th>District
+	<tr><td>Population <td> 10
+	<tr><td>Schools    <td> 20
+	<tr><td>Hospitals  <td> 20
+      </table>
     </div>
-    <div id="map">
-    </div>
-</div>
-<div id="hover">
-</div>
-<div id="map-title">
-</div>
+  </div>
 
-
+  <div id="hover"></div>
 </body>
 
 <script id="drTemplate" type='text/mustache'>
@@ -106,19 +109,20 @@
 </script>
 
 <script id="districtTemplate" type='text/mustache'>
-    {{name}} <br /> Population Density: <b>{{metric}}</b> (persons/sq.km.)
+  <b>{{name}}</b> {{metric}}<br>
+  school: {{school}}
 </script>
 
 
-<script id="drTemplateGR" type='text/mustache'>
-    {{#img}}
-    <img src="{{img}}" class='headqtr-img'>
-    {{/img}}
-    <div class='headqtr-txt'>
-        <b>{{name}}</b> <br /> Growth Rate: <b>{{metric}}</b> % <br />
-        {{&text}}
-    </div>
-</script>
+<!-- <script id="drTemplateGR" type='text/mustache'> -->
+<!--     {{#img}} -->
+<!--     <img src="{{img}}" class='headqtr-img'> -->
+<!--     {{/img}} -->
+<!--     <div class='headqtr-txt'> -->
+<!--         <b>{{name}}</b> <br /> Growth Rate: <b>{{metric}}</b> % <br /> -->
+<!--         {{&text}} -->
+<!--     </div> -->
+<!-- </script> -->
 
 <script id="districtTemplateGR" type='text/mustache'>
     {{name}} <br /> Growth Rate: <b>{{metric}}</b> %
@@ -126,6 +130,3 @@
 
 
 </html>
-
-
-
