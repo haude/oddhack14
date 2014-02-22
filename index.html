@@ -1,10 +1,9 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
-<head>
+  <head>
     <meta charset="UTF-8">
     <title>oddhack14</title>
     <script type="text/javascript" src="assets/jquery-1.7.2.min.js"></script>
-    <!-- <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script> -->
     <script type="text/javascript" src="assets/mustache.js"></script>
     <script type="text/javascript" src="assets/jquery.svg.js"></script>
     <script type="text/javascript" src="assets/jquery.xcolor.min.js"></script>
@@ -14,119 +13,97 @@
     <script type="text/javascript" src="assets/src/map_data.js"></script>
     <script type="text/javascript" src="assets/src/nepalmap.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" media="all">
-    <link rel="stylesheet" type="text/css" href="assets/font/font-awesome.min.css" media="all">
-
     <style>
-        .clear{
-            clear:both;
-        }
+      .clear{
+      clear:both;
+      }
 
-        #map{
-            height:600px;
-        }
+      #map{
+      height:600px;
+      }
 
-        #layer-type{
-            display: none;
-        }
-        #hover{
-            display: none;
-            position: absolute;
-            opacity: 0.9;
-            border:2px solid #fff;
-            color:#fff;
-            background-color: #121621;
-            padding:3px 20px 3px 5px;
-            border-radius: 5px;
-            font-family: Georgia;
-        }
+      #layer-type{
+      display: none;
+      }
 
-        #map-title{
-	    font-family: serif;
-	    margin: 20px 0px 0px 20px;
-            font-size: 40px;
-            display: none;
-            font-weight: bold;
-            width: 100%;
-        }
+      #hover{
+      display: none;
+      position: absolute;
+      opacity: 0.9;
+      border:2px solid #fff;
+      color:#fff;
+      background-color: #121621;
+      padding:3px 20px 3px 5px;
+      border-radius: 5px;
+      font-family: Georgia;
+      }
 
-	#stats{
-	   margin-top: 20px;
-	   border: 1px solid black;
-	   width:100%;
-	}
+      #map-title{
+      font-family: 'Palatino Linotype';
+      margin: 20px 0px 0px 20px;
+      font-size: 40px;
+      display: none;
+      font-weight: bold;
+      width: 100%;
+      }
 
-	#stats tr td{
-	   padding-left:10px;
-	}
+      #stats{
+      margin-top: 20px;
+      border: 1px solid black;
+      width:100%;
+      }
 
-        .headqtr-txt{
-            float:right;
-            margin-top:6px
-        }
+      #stats tr td{
+      padding-left:10px;
+      }
+
+      .headqtr-txt{
+      float:right;
+      margin-top:6px
+      }
 
     </style>
 
     <script type="text/javascript">
-        $(function(){
-            //popnDensity from map_data.js
-            $('#map').nepalSVG({data:popnDensity})
-        })
+      $(function(){
+      $('#map').nepalSVG({data:popnDensity})
+      })
 
-        function loadMap(data){
-            $('#map').nepalSVGReset();
-            $('#map').nepalSVG({data:data});
-        }
+      function loadMap(data){
+      $('#map').nepalSVGReset();
+      $('#map').nepalSVG({data:data});
+      }
     </script>
 
-</head>
+  </head>
 
-<body>
-  <div id="map-title"></div>
-  <div class="container" style="width: 100%">
-    <div id="map" style="width: 80%; float:left"></div>
-    <div style="width: 18%; float:right; padding: 10px">
-      <table id="stats" >
-	<th>District
-	<tr><td>Population <td> 10
-	<tr><td>Schools    <td> 20
-	<tr><td>Hospitals  <td> 20
-      </table>
+  <body>
+    <div id="map-title"></div>
+    <div class="container" style="width: 100%">
+      <div id="map" style="width: 70%; float:left"></div>
+      <div style="width: 28%; float:right; padding: 10px">
+	<table id="stats" >
+	  <th colspan="2">ललितपुर
+	    <tr><td colspan="2"><img src="img/lalitpur.jpg" align="center" width="100%" style="border:1px solid black; margin-left:-5px">
+	    <tr><td>Population <td> 337785
+	    <tr><td>Schools    <td> 448
+	    <tr><td>Students   <td> 110130
+	    <tr><td>Male       <td> 53664
+	    <tr><td>Female     <td> 56466
+
+	</table>
+	<td style="width: 100%"><img src="img/chart.png" width=100%>
+      </div>
     </div>
-  </div>
 
-  <div id="hover"></div>
-</body>
+    <div id="hover"></div>
+  </body>
 
-<script id="drTemplate" type='text/mustache'>
-    {{#img}}
-    <img src="{{img}}" class='headqtr-img'>
-    {{/img}}
-    <div class='headqtr-txt'>
-        <b>{{name}}</b> <br /> Population Density: <b>{{metric}}</b> (persons/sq.km.) <br />
-        {{&text}}
-    </div>
-</script>
-
-<script id="districtTemplate" type='text/mustache'>
-  <b>{{name}}</b> {{metric}}<br>
-  school: {{school}}
-</script>
-
-
-<!-- <script id="drTemplateGR" type='text/mustache'> -->
-<!--     {{#img}} -->
-<!--     <img src="{{img}}" class='headqtr-img'> -->
-<!--     {{/img}} -->
-<!--     <div class='headqtr-txt'> -->
-<!--         <b>{{name}}</b> <br /> Growth Rate: <b>{{metric}}</b> % <br /> -->
-<!--         {{&text}} -->
-<!--     </div> -->
-<!-- </script> -->
-
-<script id="districtTemplateGR" type='text/mustache'>
-    {{name}} <br /> Growth Rate: <b>{{metric}}</b> %
-</script>
-
-
+  <script id="districtTemplate" type='text/mustache'>
+    <b>{{name}}</b><br>
+    polulation: {{metric}}<br>
+    school: {{school}}<br>
+    boys: {{boys}}<br>
+    girls: {{girls}}
+  </script>
 </html>

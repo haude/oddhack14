@@ -8,7 +8,6 @@ function setTitle(title){
     var top = $('#map').offset().top + $('#map-title').height() + 35;
     var left = $('#map').offset().left + $('#map-title').width() - 20;
     $('#map-title').css({top:top,left:left}).html(title).show();
-
 }
 
 function abbrLookup(abbr){
